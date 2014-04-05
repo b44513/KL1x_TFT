@@ -17,6 +17,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
+#include <ucos_ii.h>
+#include "app_cfg.h"
 
 /* 
  * Global Variable

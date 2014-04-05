@@ -1,7 +1,7 @@
 #include "common.h"
-#include "app_cfg.h"
 #include "bsp.h"
-#include <ucos_ii.h>
+#include "lcd.h"
+#include "led.h"
 
 static void AppTaskStart (void *p_arg);
 static void AppTaskTimingCtrl (void *p_arg);
@@ -61,6 +61,10 @@ static void AppTaskStart (void *p_arg)
     OSStatInit();                                               /* Determine CPU capacity                               */
 #endif
     
+    led_init();
+    lcd_init();
+    lcd_fill_window(0, 0, LCD_XSIZE - 1, LCD_YSIZE - 1, RED);
+    
     pLEDctrlSemphore = OSSemCreate(0);
     
     OSTaskCreateExt((void (*)(void *)) AppTaskTimingCtrl,            /* Create the start task                                */
@@ -97,15 +101,24 @@ static void AppTaskTimingCtrl (void *p_arg)
         OSTimeDlyHMSM(0, 0, 1, 0);
     }
 }
-__root int cnt = 0;
+
 static void AppTaskExecutor (void *p_arg)
 {
+    INT8U cnt = 0;
     INT8U err;
     (void)p_arg;
 
     while (OS_TRUE) {                                          /* Task body, always written as an infinite loop.       */
         OSSemPend(pLEDctrlSemphore, 0, &err);
-        /* do sth */
-        cnt++;
+        
+        led_toggle();
+        
+        if (cnt == 0) {
+            cnt++;
+            lcd_fill_window(50, 50, 250, 150, YELLOW);
+        } else {
+            cnt = 0;
+            lcd_fill_window(50, 50, 250, 150, GREY);
+        }
     }
 }

@@ -87,7 +87,7 @@
         </option>
         <option>
           <name>OGLastSavedByProductVersion</name>
-          <state>6.70.1.5793</state>
+          <state>7.10.1.6733</state>
         </option>
         <option>
           <name>GeneralEnableMisra</name>
@@ -163,7 +163,7 @@
       <name>ICCARM</name>
       <archiveVersion>2</archiveVersion>
       <data>
-        <version>29</version>
+        <version>30</version>
         <wantNonLocal>1</wantNonLocal>
         <debug>1</debug>
         <option>
@@ -229,7 +229,7 @@
         <option>
           <name>CCAllowList</name>
           <version>1</version>
-          <state>1001010</state>
+          <state>10010100</state>
         </option>
         <option>
           <name>CCDebugInfo</name>
@@ -405,6 +405,11 @@
         </option>
         <option>
           <name>CCNoLiteralPool</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>CCOptStrategySlave</name>
+          <version>0</version>
           <state>0</state>
         </option>
       </data>
@@ -1113,7 +1118,7 @@
       <name>ICCARM</name>
       <archiveVersion>2</archiveVersion>
       <data>
-        <version>29</version>
+        <version>30</version>
         <wantNonLocal>1</wantNonLocal>
         <debug>0</debug>
         <option>
@@ -1179,7 +1184,7 @@
         <option>
           <name>CCAllowList</name>
           <version>1</version>
-          <state>1111111</state>
+          <state>11111110</state>
         </option>
         <option>
           <name>CCDebugInfo</name>
@@ -1346,6 +1351,11 @@
         </option>
         <option>
           <name>CCNoLiteralPool</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>CCOptStrategySlave</name>
+          <version>0</version>
           <state>0</state>
         </option>
       </data>
@@ -1886,6 +1896,18 @@
   </configuration>
   <group>
     <name>APP</name>
+    <file>
+      <name>$PROJ_DIR$\..\APP\lcd.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\APP\lcd.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\APP\led.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\APP\led.h</name>
+    </file>
     <file>
       <name>$PROJ_DIR$\..\APP\main.c</name>
     </file>
