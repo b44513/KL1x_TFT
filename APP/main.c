@@ -63,7 +63,10 @@ static void AppTaskStart (void *p_arg)
     
     led_init();
     lcd_init();
-    lcd_fill_window(0, 0, LCD_XSIZE - 1, LCD_YSIZE - 1, RED);
+
+    lcd_fill_window(0, 0, LCD_XSIZE - 1, LCD_YSIZE - 1, GREY);
+    lcd_draw_h_line(10, 2, 15, RED);
+    lcd_draw_v_line(10, 10, 50, BLUE);
     
     pLEDctrlSemphore = OSSemCreate(0);
     

@@ -275,8 +275,11 @@ void lcd_init(void)
 
     /* Bit7 - Bit 5 control the where (0, 0) located and how memory point increased automatically */
     LCD_WRITE_CMD(0x36); 
-    LCD_WRITE_DATA(0x68); 
-
+    LCD_WRITE_DATA(0x68);       /* (0, 0) at right top, horizontal screen */
+    //LCD_WRITE_DATA(0xA8);       /* (0, 0) at left bottom, horizontal screen */
+    //LCD_WRITE_DATA(0x08);       /* (0, 0) at left top, vertical screen */
+    //LCD_WRITE_DATA(0xC8);       /* (0, 0) at right bottom, vertical screen */
+    
     LCD_WRITE_CMD(0x2A); 
     LCD_WRITE_DATA(0x00);
     LCD_WRITE_DATA(0x00);
@@ -317,6 +320,66 @@ void lcd_draw_pixel(uint16 x, uint16 y, uint16 color)
     
     LCD_WRITE_CMD(0x2C); 
     LCD_WRITE_DATA(color);
+}
+
+/*  
+    func name:  lcd_draw_h_line 
+    input:      x1, y, x2
+    output:     none
+    note:       draw a Horizontal line
+*/
+void lcd_draw_h_line(uint16 x1, uint16 y, uint16 x2, uint16 color)
+{
+    LCD_WRITE_CMD(0x2A);
+    LCD_WRITE_DATA(x1 >> 8);
+    LCD_WRITE_DATA(x1 & 0xFF);
+
+    LCD_WRITE_CMD(0x2B);
+    LCD_WRITE_DATA(y >> 8);
+    LCD_WRITE_DATA(y & 0x0FF);
+    
+    LCD_WRITE_CMD(0x2C);
+    for (; x1 <= x2; x1++)
+    {
+        LCD_WRITE_DATA(color);
+    }
+}
+
+/*  
+    func name:  lcd_draw_v_line 
+    input:      x, y1, y2
+    output:     none
+    note:       draw a vertical line, to using continous memory write, swith screen to vertical mode
+*/
+void lcd_draw_v_line(uint16 x, uint16 y1, uint16 y2, uint16 color)
+{
+    LCD_WRITE_CMD(0x36);
+    LCD_WRITE_DATA(0x08);               /* (0, 0) at left top, Vertical Screen */
+	
+    /* must do coordinate conversion, physical (0, 0) is at left top */
+#define LOG2PHYS_X(x, y) LCD_YSIZE - 1 - (y)
+#define LOG2PHYS_Y(x, y) x
+    
+	uint16 y_phys  = LOG2PHYS_Y(x, y1);
+	uint16 x1_phys = LOG2PHYS_X(x, y2);
+	uint16 x2_phys = LOG2PHYS_X(x, y1);
+    
+    LCD_WRITE_CMD(0x2A);
+    LCD_WRITE_DATA(x1_phys >> 8);
+    LCD_WRITE_DATA(x1_phys & 0xFF);
+
+    LCD_WRITE_CMD(0x2B);
+    LCD_WRITE_DATA(y_phys >> 8);
+    LCD_WRITE_DATA(y_phys & 0x0FF);
+    
+    LCD_WRITE_CMD(0x2C);
+    for (; x1_phys <= x2_phys; x1_phys++)
+    {
+        LCD_WRITE_DATA(color);
+    }
+    
+    LCD_WRITE_CMD(0x36); 
+    LCD_WRITE_DATA(0x68);               /* (0, 0) at right top, Horizontal Screen */
 }
 
 /*  
