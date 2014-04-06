@@ -25,17 +25,20 @@
 #define _RD_H()	    (FGPIOB_PSOR = 1 << 19)
 #define _RD_L()	    (FGPIOB_PCOR = 1 << 19)
 
-
-#define _DATA(val)                  do {                   \
+#define _WR_DATA(val)               do {                   \
                                         FGPIOC_PDOR = val; \
                                         FGPIOD_PDOR = (val) >> 12;  \
                                     } while (0)            \
-
+										
+#define _RD_DATA(p_val)             do {                   \
+                                        *(p_val) = (FGPIOC_PDIR & 0x00000FFF);			\
+                                        *(p_val) |= ((FGPIOD_PDIR & 0x0000000F) << 12);	\
+                                    } while (0)            \
                                         
 #define LCD_WRITE_CMD(val)          do {                \
                                         _CS_L();        \
                                         _RS_L();        \
-                                        _DATA(val);     \
+                                        _WR_DATA(val);	\
                                         _WR_L();        \
                                         _WR_H();        \
                                         _CS_H();        \
@@ -44,22 +47,77 @@
 #define LCD_WRITE_DATA(val)         do {                \
                                         _CS_L();        \
                                         _RS_H();        \
-                                        _DATA(val);     \
+                                        _WR_DATA(val);	\
                                         _WR_L();        \
                                         _WR_H();        \
                                         _CS_H();        \
                                     } while (0)    
+										
+#define LCD_CFG_DATA_RD()			do {                \
+										FGPIOC_PDDR &= ~0x00000FFF;	\
+										FGPIOD_PDDR &= ~0x0000000F;	\
+                                    } while (0)    
+										
+#define LCD_CFG_DATA_WR()			do {                \
+										FGPIOC_PDDR |= 0x00000FFF;	\
+										FGPIOD_PDDR |= 0x0000000F;	\
+										FGPIOC_PSOR = 0x00000FFF;	\
+										FGPIOD_PSOR = 0x0000000F;	\
+                                    } while (0)    
+
+/* Tra must > 340ns, a nop is ~20ns @ 48MHz */
+#define _DELAY_TRA()                do {                    \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                    } while (0)             \
                                         
-                                   
-#define LCD_WRITE_REG(reg, data)    do {                       \
-                                        LCD_WRITE_CMD(reg);    \
-                                        LCD_WRITE_DATA(data);  \
-                                    } while (0)
+/* Trdh must > 90ns, a nop is ~20ns @ 48MHz */
+#define _DELAY_TRDH()               do {                    \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                     } while (0)            \
+                                            
+#define LCD_READ_DATA(p_val)         do {					\
+                                        _CS_L();			\
+                                        _RS_H();			\
+                                        _RD_L();			\
+                                        _DELAY_TRA();       \
+										_RD_DATA(p_val);	\
+                                        _RD_H();			\
+                                        _DELAY_TRDH();      \
+                                        _CS_H();        	\
+                                    } while (0)    
 
 /* 
     internal function area
 */
 
+/*  
+    func name:  _delay_ms 
+    input:      ms
+    output:     none
+    note:       delay n ms
+*/                             
 static void _delay_ms(uint32 ms)
 {
     ms = ms * 2500;
@@ -113,7 +171,7 @@ static void _lcd_io_init(void)
     /* output high in default */
     FGPIOB_PSOR = 0x000F0004;   /* BLCNT drive LOW, other pins drive HIGH */
     FGPIOC_PSOR = 0x00000FFF;
-    FGPIOD_PSOR = 0x00000FFF;
+    FGPIOD_PSOR = 0x0000000F;
 }
 
 /*  
@@ -306,7 +364,7 @@ void lcd_init(void)
     func name:  lcd_draw_pixel 
     input:      x, y, color
     output:     none
-    note:       fill a point at (x, y) with color
+    note:       fill a pixel at (x, y) with color
 */
 void lcd_draw_pixel(uint16 x, uint16 y, uint16 color)
 {
@@ -323,8 +381,38 @@ void lcd_draw_pixel(uint16 x, uint16 y, uint16 color)
 }
 
 /*  
+    func name:  lcd_get_pixel 
+    input:      x, y, color
+    output:     none
+    note:       get a pixel's color
+*/
+uint16 lcd_get_pixel(uint16 x, uint16 y)
+{
+	uint16 color = 0;
+	
+    LCD_WRITE_CMD(0x2A); 
+    LCD_WRITE_DATA(x >> 8);
+    LCD_WRITE_DATA(x & 0xFF);
+
+    LCD_WRITE_CMD(0x2B); 
+    LCD_WRITE_DATA(y >> 8);
+    LCD_WRITE_DATA(y & 0x0FF);
+    
+    LCD_WRITE_CMD(0x2E);
+	
+	LCD_CFG_DATA_RD();
+	
+    LCD_READ_DATA(&color);
+    LCD_READ_DATA(&color);
+    
+	LCD_CFG_DATA_WR();
+	
+	return color;
+}
+
+/*  
     func name:  lcd_draw_h_line 
-    input:      x1, y, x2
+    input:      x1, y, x2, color
     output:     none
     note:       draw a Horizontal line
 */
@@ -347,7 +435,7 @@ void lcd_draw_h_line(uint16 x1, uint16 y, uint16 x2, uint16 color)
 
 /*  
     func name:  lcd_draw_v_line 
-    input:      x, y1, y2
+    input:      x, y1, y2, color
     output:     none
     note:       draw a vertical line, to using continous memory write, swith screen to vertical mode
 */

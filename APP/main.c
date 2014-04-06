@@ -43,7 +43,7 @@ int main (void)
 
     return (1);
 }
-
+__root uint16 testcolor;
 static void AppTaskStart (void *p_arg)
 {
     INT32U  cpu_clk_freq;
@@ -65,6 +65,7 @@ static void AppTaskStart (void *p_arg)
     lcd_init();
 
     lcd_fill_window(0, 0, LCD_XSIZE - 1, LCD_YSIZE - 1, GREY);
+    testcolor = lcd_get_pixel(5, 5);
     lcd_draw_h_line(10, 2, 15, RED);
     lcd_draw_v_line(10, 10, 50, BLUE);
     
