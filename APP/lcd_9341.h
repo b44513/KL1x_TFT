@@ -1,5 +1,5 @@
-#ifndef __LCD_H__
-#define __LCD_H__
+#ifndef __LCD_9341_H__
+#define __LCD_9341_H__
 
 #include "common.h"
 
@@ -19,6 +19,7 @@
 
 void lcd_init(void);
 void lcd_draw_pixel(uint16 x, uint16 y, uint16 color);
+uint16 lcd_get_pixel(uint16 x, uint16 y);
 void lcd_draw_h_line(uint16 x1, uint16 y, uint16 x2, uint16 color);
 void lcd_draw_v_line(uint16 x, uint16 y1, uint16 y2, uint16 color);
 void lcd_set_window(uint16 x1, uint16 y1, uint16 x2, uint16 y2);

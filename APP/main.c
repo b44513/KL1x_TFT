@@ -1,6 +1,6 @@
 #include "common.h"
 #include "bsp.h"
-#include "lcd.h"
+#include "lcd_9341.h"
 #include "led.h"
 
 static void AppTaskStart (void *p_arg);

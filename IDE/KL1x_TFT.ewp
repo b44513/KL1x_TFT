@@ -306,6 +306,11 @@
           <state>$PROJ_DIR$\..\RTOS\uCOS-II\Config</state>
           <state>$PROJ_DIR$\..\RTOS\uCOS-II\Ports</state>
           <state>$PROJ_DIR$\..\RTOS\uCOS-II\Source</state>
+          <state>$PROJ_DIR$\..\GUI\GUI CFG</state>
+          <state>$PROJ_DIR$\..\GUI\GUI Source\Core</state>
+          <state>$PROJ_DIR$\..\GUI\GUI Source\MultiLayer</state>
+          <state>$PROJ_DIR$\..\GUI\GUI Source\Widget</state>
+          <state>$PROJ_DIR$\..\GUI\GUI Source\WM</state>
           <state>$PROJ_DIR$\..\UTLIS</state>
         </option>
         <option>
@@ -1897,10 +1902,10 @@
   <group>
     <name>APP</name>
     <file>
-      <name>$PROJ_DIR$\..\APP\lcd.c</name>
+      <name>$PROJ_DIR$\..\APP\lcd_9341.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\APP\lcd.h</name>
+      <name>$PROJ_DIR$\..\APP\lcd_9341.h</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\APP\led.c</name>
@@ -1944,6 +1949,2220 @@
   </group>
   <group>
     <name>GUI</name>
+    <group>
+      <name>GUI CFG</name>
+      <file>
+        <name>$PROJ_DIR$\..\GUI\GUI CFG\GUIConf.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\GUI\GUI CFG\GUITouchConf.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\GUI\GUI CFG\LCDConf.h</name>
+      </file>
+    </group>
+    <group>
+      <name>GUI Source</name>
+      <group>
+        <name>AntiAlias</name>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\AntiAlias\GUIAAArc.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\AntiAlias\GUIAAChar.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\AntiAlias\GUIAAChar2.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\AntiAlias\GUIAAChar4.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\AntiAlias\GUIAACircle.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\AntiAlias\GUIAALib.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\AntiAlias\GUIAALine.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\AntiAlias\GUIAAPoly.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\AntiAlias\GUIAAPolyOut.c</name>
+        </file>
+      </group>
+      <group>
+        <name>ConvertColor</name>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDP111.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDP222.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDP233.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDP323.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDP332.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDP444_12.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDP444_12_1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDP444_16.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDP555.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDP556.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDP565.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDP655.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDP666.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDP8666.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDP8666_1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDP888.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDPM233.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDPM323.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDPM332.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDPM444_12.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDPM444_16.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDPM555.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDPM556.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDPM565.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDPM655.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDPM666.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\ConvertColor\LCDPM888.c</name>
+        </file>
+      </group>
+      <group>
+        <name>Core</name>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI2DLib.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI__AddSpaceHex.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI__Arabic.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI__CalcTextRect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI__DivideRound.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI__DivideRound32.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI__DrawBitmap16bpp.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI__GetCursorPos.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI__GetFontSizeY.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI__GetNumChars.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI__HandleEOLine.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI__IntersectRect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI__IntersectRects.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI__memset.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI__memset16.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI__Read.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI__ReduceRect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI__SetText.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI__strcmp.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI__strlen.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI__Wrap.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_AddBin.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_AddDec.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_AddDecMin.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_AddDecShift.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_AddHex.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_AddKeyMsgHook.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_ALLOC_AllocInit.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_ALLOC_AllocZero.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_BMP.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_BMP_Serialize.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CalcColorDist.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_ClearRectEx.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_Color2VisColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_ConfDefaults.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CursorArrowL.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CursorArrowLI.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CursorArrowLPx.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CursorArrowM.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CursorArrowMI.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CursorArrowMPx.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CursorArrowS.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CursorArrowSI.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CursorArrowSPx.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CursorCrossL.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CursorCrossLI.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CursorCrossLPx.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CursorCrossM.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CursorCrossMI.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CursorCrossMPx.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CursorCrossS.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CursorCrossSI.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CursorCrossSPx.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CursorHeaderM.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CursorHeaderMI.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CursorHeaderMPx.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CursorPal.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_CursorPalI.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DispBin.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DispCEOL.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DispChar.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DispChars.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DispHex.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DispString.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DispStringAt.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DispStringAtCEOL.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DispStringHCenter.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DispStringInRect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DispStringInRectEx.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DispStringInRectWrap.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DispStringLen.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DrawBitmap.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DrawBitmap_555.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DrawBitmap_565.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DrawBitmap_888.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DrawBitmapEx.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DrawBitmapExp.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DrawBitmapMag.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DrawFocusRect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DrawGraph.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DrawGraphEx.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DrawHLine.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DrawLine.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DrawPie.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DrawPixel.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DrawPoint.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DrawPolygon.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DrawPolyline.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DrawRectEx.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_DrawVLine.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_ErrorOut.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_Exec.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_FillPolygon.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_FillRect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_FillRectEx.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_FontIntern.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_GetBitmapPixelColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_GetBitmapPixelIndex.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_GetClientRect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_GetColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_GetDispPos.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_GetDrawMode.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_GetFont.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_GetFontInfo.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_GetFontSizeY.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_GetLineStyle.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_GetOrg.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_GetStringDistX.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_GetTextAlign.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_GetTextExtend.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_GetTextMode.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_GetVersionString.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_GetYSizeOfFont.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_GIF.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_Goto.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_InitLUT.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_InvertRect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_IsInFont.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_Log.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_MergeRect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_MOUSE.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_MOUSE_DriverPS2.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_MoveRect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_OnKey.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_Pen.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_PID.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_Private.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_Protected.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_RectsIntersect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_SaveContext.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_ScreenSize.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_SelectLayer.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_SelectLCD.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_SetClipRect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_SetColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_SetColorIndex.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_SetDecChar.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_SetDefault.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_SetDrawMode.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_SetFont.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_SetLBorder.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_SetLineStyle.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_SetLUTColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_SetLUTColorEx.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_SetLUTEntry.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_SetOrg.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_SetPixelIndex.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_SetTextAlign.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_SetTextMode.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_SetTextStyle.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_SIF.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_SIF_Prop.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_TOUCH.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_TOUCH_DriverAnalog.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_TOUCH_StoreState.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_TOUCH_StoreUnstable.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_UC.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_UC_ConvertUC2UTF8.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_UC_ConvertUTF82UC.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_UC_DispString.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_UC_EncodeNone.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_UC_EncodeUTF8.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_VNC.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_WaitEvent.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_WaitKey.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_Warn.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUI_X.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUIAlloc.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUIArc.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUIChar.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUICharLine.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUICharM.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUICharP.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUICirc.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUIColor2Index.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUICore.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUICurs.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUIDebug.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUIEncJS.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUIIndex2Color.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUIPolyE.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUIPolyM.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUIPolyR.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUIRealloc.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUIStream.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUITask.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUITime.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUITimer.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUIType.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUIUC0.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUIVal.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUIValf.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\GUIVersion.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCD.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCD.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCD_API.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCD_ConfDefaults.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCD_DrawVLine.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCD_GetColorIndex.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCD_GetEx.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCD_GetNumDisplays.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCD_GetPixelColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCD_Index2ColorEx.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCD_L0_Generic.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCD_Mirror.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCD_MixColors256.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCD_Private.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCD_Protected.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCD_ReadRect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCD_Rotate180.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCD_RotateCCW.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCD_RotateCW.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCD_SelectLCD.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCD_SetAPI.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCD_SetClipRectEx.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCD_UpdateColorIndices.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCDAA.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCDColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCDGetP.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCDInfo.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCDInfo0.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCDInfo1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCDL0Delta.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCDL0Mag.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCDP1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCDP565_Index2Color.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCDP888_Index2Color.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCDPM565_Index2Color.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCDPM888_Index2Color.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCDRLE16.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCDRLE4.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCDRLE8.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Core\LCDSIM.h</name>
+        </file>
+      </group>
+      <group>
+        <name>Font</name>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F08_1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F08_ASCII.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F10_1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F10_ASCII.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F10S_1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F10S_ASCII.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F13_1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F13_ASCII.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F13B_1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F13B_ASCII.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F13H_1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F13H_ASCII.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F13HB_1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F13HB_ASCII.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F16_1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F16_1HK.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F16_ASCII.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F16_HK.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F16B_1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F16B_ASCII.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F24_1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F24_ASCII.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F24B_1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F24B_ASCII.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F32_1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F32_ASCII.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F32B_1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F32B_ASCII.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F4x6.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F6x8.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F8x10_ASCII.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F8x12_ASCII.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F8x13_1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F8x13_ASCII.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F8x15B_1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F8x15B_ASCII.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F8x16.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\F8x8.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\FComic18B_1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\FComic18B_ASCII.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\FComic24B_1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\FComic24B_ASCII.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\FD24x32.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\FD32.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\FD36x48.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\FD48.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\FD48x64.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\FD60x80.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\FD64.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Font\FD80.c</name>
+        </file>
+      </group>
+      <group>
+        <name>LCDDriver</name>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\LCDDriver\LCDTemplate.c</name>
+        </file>
+      </group>
+      <group>
+        <name>Widget</name>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\BUTTON.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\BUTTON.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\BUTTON__SetBitmapObj.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\BUTTON_Bitmap.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\BUTTON_BMP.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\BUTTON_Create.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\BUTTON_CreateIndirect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\BUTTON_Default.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\BUTTON_Get.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\BUTTON_GetBitmap.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\BUTTON_IsPressed.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\BUTTON_Private.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\BUTTON_SelfDraw.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\BUTTON_SetFocusColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\BUTTON_SetTextAlign.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\BUTTON_StreamedBitmap.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\CHECKBOX.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\CHECKBOX.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\CHECKBOX_Create.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\CHECKBOX_CreateIndirect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\CHECKBOX_Default.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\CHECKBOX_GetState.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\CHECKBOX_GetText.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\CHECKBOX_Image.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\CHECKBOX_IsChecked.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\CHECKBOX_Private.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\CHECKBOX_SetBkColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\CHECKBOX_SetBoxBkColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\CHECKBOX_SetDefaultImage.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\CHECKBOX_SetFocusColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\CHECKBOX_SetFont.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\CHECKBOX_SetImage.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\CHECKBOX_SetNumStates.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\CHECKBOX_SetSpacing.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\CHECKBOX_SetState.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\CHECKBOX_SetText.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\CHECKBOX_SetTextAlign.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\CHECKBOX_SetTextColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\DIALOG.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\DIALOG.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\DIALOG_Intern.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\DROPDOWN.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\DROPDOWN.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\DROPDOWN_AddString.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\DROPDOWN_Create.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\DROPDOWN_CreateIndirect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\DROPDOWN_Default.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\DROPDOWN_DeleteItem.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\DROPDOWN_GetNumItems.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\DROPDOWN_InsertString.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\DROPDOWN_ItemSpacing.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\DROPDOWN_Private.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\DROPDOWN_SetAutoScroll.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\DROPDOWN_SetBkColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\DROPDOWN_SetColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\DROPDOWN_SetFont.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\DROPDOWN_SetScrollbarColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\DROPDOWN_SetScrollbarWidth.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\DROPDOWN_SetTextAlign.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\DROPDOWN_SetTextColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\DROPDOWN_SetTextHeight.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\EDIT.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\EDIT.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\EDIT_Create.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\EDIT_CreateIndirect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\EDIT_Default.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\EDIT_GetCursorPixelPos.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\EDIT_GetCursorPos.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\EDIT_GetNumChars.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\EDIT_Private.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\EDIT_SetCursorAtChar.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\EDIT_SetFocussable.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\EDIT_SetInsertMode.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\EDIT_SetpfAddKeyEx.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\EDIT_SetpfUpdateBuffer.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\EDIT_SetSel.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\EDIT_SetTextMode.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\EDITBin.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\EDITDec.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\EDITFloat.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\EDITHex.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\EDITUlong.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\FRAMEWIN.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\FRAMEWIN.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\FRAMEWIN__UpdateButtons.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\FRAMEWIN_AddMenu.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\FRAMEWIN_Button.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\FRAMEWIN_ButtonClose.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\FRAMEWIN_ButtonMax.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\FRAMEWIN_ButtonMin.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\FRAMEWIN_Create.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\FRAMEWIN_CreateIndirect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\FRAMEWIN_Default.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\FRAMEWIN_Get.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\FRAMEWIN_IsMinMax.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\FRAMEWIN_MinMaxRest.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\FRAMEWIN_Private.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\FRAMEWIN_SetBorderSize.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\FRAMEWIN_SetColors.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\FRAMEWIN_SetFont.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\FRAMEWIN_SetResizeable.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\FRAMEWIN_SetTitleHeight.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\FRAMEWIN_SetTitleVis.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GRAPH.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GRAPH.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GRAPH_CreateIndirect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GRAPH_DATA_XY.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GRAPH_DATA_YT.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GRAPH_Private.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GRAPH_SCALE.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GUI_ARRAY.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GUI_ARRAY.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GUI_ARRAY_DeleteItem.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GUI_ARRAY_InsertItem.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GUI_ARRAY_ResizeItem.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GUI_DRAW.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GUI_DRAW_BITMAP.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GUI_DRAW_BMP.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GUI_DRAW_Self.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GUI_DRAW_STREAMED.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GUI_EditBin.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GUI_EditDec.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GUI_EditFloat.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GUI_EditHex.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GUI_EditString.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GUI_HOOK.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\GUI_HOOK.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\HEADER.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\HEADER.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\HEADER__SetDrawObj.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\HEADER_Bitmap.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\HEADER_BMP.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\HEADER_Create.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\HEADER_CreateIndirect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\HEADER_GetSel.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\HEADER_Private.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\HEADER_SetDragLimit.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\HEADER_StreamedBitmap.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX_Create.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX_CreateIndirect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX_Default.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX_DeleteItem.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX_Font.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX_GetItemText.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX_GetNumItems.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX_GetTextAlign.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX_InsertString.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX_ItemDisabled.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX_ItemSpacing.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX_MultiSel.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX_Private.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX_ScrollStep.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX_SetAutoScroll.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX_SetBkColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX_SetOwner.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX_SetOwnerDraw.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX_SetScrollbarColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX_SetScrollbarWidth.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX_SetString.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX_SetTextAlign.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTBOX_SetTextColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_Create.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_CreateIndirect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_Default.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_DeleteAllRows.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_DeleteColumn.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_DeleteRow.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_DisableRow.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_GetBkColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_GetFont.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_GetHeader.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_GetItemText.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_GetNumColumns.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_GetNumRows.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_GetSel.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_GetTextColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_InsertRow.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_Private.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_SetAutoScroll.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_SetBkColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_SetColumnWidth.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_SetFont.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_SetGridVis.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_SetItemColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_SetItemText.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_SetLBorder.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_SetRBorder.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_SetRowHeight.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_SetSel.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_SetSort.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_SetTextAlign.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_SetTextColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\LISTVIEW_UserData.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MENU.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MENU.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MENU__FindItem.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MENU_Attach.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MENU_CreateIndirect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MENU_Default.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MENU_DeleteItem.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MENU_DisableItem.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MENU_EnableItem.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MENU_GetItem.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MENU_GetItemText.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MENU_GetNumItems.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MENU_InsertItem.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MENU_Popup.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MENU_Private.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MENU_SetBkColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MENU_SetBorderSize.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MENU_SetFont.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MENU_SetItem.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MENU_SetTextColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MESSAGEBOX.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MESSAGEBOX.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MULTIEDIT.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MULTIEDIT.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MULTIEDIT_Create.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MULTIEDIT_CreateIndirect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MULTIPAGE.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MULTIPAGE.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MULTIPAGE_Create.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MULTIPAGE_CreateIndirect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MULTIPAGE_Default.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\MULTIPAGE_Private.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\PROGBAR.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\PROGBAR.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\PROGBAR_Create.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\PROGBAR_CreateIndirect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\PROGBAR_Private.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\PROGBAR_SetBarColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\PROGBAR_SetFont.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\PROGBAR_SetMinMax.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\PROGBAR_SetText.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\PROGBAR_SetTextAlign.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\PROGBAR_SetTextColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\PROGBAR_SetTextPos.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\RADIO.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\RADIO.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\RADIO_Create.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\RADIO_CreateIndirect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\RADIO_Default.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\RADIO_GetText.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\RADIO_Image.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\RADIO_Private.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\RADIO_SetBkColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\RADIO_SetDefaultImage.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\RADIO_SetFocusColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\RADIO_SetFont.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\RADIO_SetGroupId.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\RADIO_SetImage.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\RADIO_SetText.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\RADIO_SetTextColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\SCROLLBAR.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\SCROLLBAR.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\SCROLLBAR_Create.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\SCROLLBAR_CreateIndirect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\SCROLLBAR_Defaults.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\SCROLLBAR_GetValue.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\SCROLLBAR_Private.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\SCROLLBAR_SetColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\SCROLLBAR_SetWidth.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\SLIDER.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\SLIDER.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\SLIDER_Create.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\SLIDER_CreateIndirect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\SLIDER_Default.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\SLIDER_Private.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\SLIDER_SetFocusColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\TEXT.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\TEXT.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\TEXT_Create.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\TEXT_CreateIndirect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\TEXT_Default.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\TEXT_Private.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\TEXT_SetBkColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\TEXT_SetFont.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\TEXT_SetText.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\TEXT_SetTextAlign.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\TEXT_SetTextColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\TEXT_SetWrapMode.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\WIDGET.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\WIDGET.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\WIDGET_Effect_3D.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\WIDGET_Effect_3D1L.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\WIDGET_Effect_3D2L.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\WIDGET_Effect_None.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\WIDGET_Effect_Simple.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\WIDGET_FillStringInRect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\WIDGET_SetEffect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\WIDGET_SetWidth.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\WINDOW.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\WINDOW_Default.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\Widget\WINDOW_Private.h</name>
+        </file>
+      </group>
+      <group>
+        <name>WM</name>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM__ForEachDesc.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM__GetFirstSibling.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM__GetFocussedChild.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM__GetLastSibling.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM__GetOrg_AA.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM__GetPrevSibling.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM__IsAncestor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM__IsChild.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM__IsEnabled.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM__NotifyVisChanged.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM__Screen2Client.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM__SendMessage.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM__SendMessageIfEnabled.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM__SendMessageNoPara.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM__UpdateChildPositions.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_AttachWindow.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_BringToBottom.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_BringToTop.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_Broadcast.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_CheckScrollPos.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_CriticalHandle.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_DIAG.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_EnableWindow.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_ForEachDesc.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetBkColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetCallback.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetClientRect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetClientWindow.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetDesktopWindow.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetDesktopWindowEx.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetDiagInfo.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetDialogItem.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetFirstChild.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetFlags.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetFocussedWindow.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetId.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetInsideRect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetInsideRectExScrollbar.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetInvalidRect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetNextSibling.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetOrg.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetParent.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetPrevSibling.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetScrollbar.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetScrollPartner.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetScrollPos.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetScrollState.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetWindowRect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GetWindowSize.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_GUI.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_HasCaptured.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_HasFocus.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_Hide.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_Intern.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_Intern_ConfDep.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_InvalidateArea.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_IsCompletelyVisible.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_IsEnabled.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_IsFocussable.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_IsVisible.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_IsWindow.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_MakeModal.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_Move.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_MoveChildTo.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_NotifyParent.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_OnKey.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_Paint.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_PaintWindowAndDescs.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_PID__GetPrevState.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_ResizeWindow.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_Screen2Win.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SendMessageNoPara.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SendToParent.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SetAnchor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SetCallback.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SetCapture.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SetCaptureMove.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SetCreateFlags.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SetDesktopColor.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SetFocus.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SetFocusOnNextChild.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SetFocusOnPrevChild.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SetId.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SetpfPollPID.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SetScrollbar.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SetScrollPos.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SetScrollState.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SetSize.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SetTrans.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SetTransState.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SetUserClipRect.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SetWindowPos.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SetXSize.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SetYSize.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_Show.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_SIM.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_StayOnTop.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_Timer.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_TimerExternal.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_UpdateWindowAndDescs.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_UserData.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_Validate.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WM_ValidateWindow.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WMMemDev.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\WM\WMTouch.c</name>
+        </file>
+      </group>
+    </group>
   </group>
   <group>
     <name>IDE</name>

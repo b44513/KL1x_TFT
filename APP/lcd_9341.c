@@ -1,7 +1,7 @@
 /* ILI9341 GPIO driver by neo.xiong@freescale.com */
 
 #include "common.h"
-#include "lcd.h"
+#include "lcd_9341.h"
 
 /* 
     macro define area
