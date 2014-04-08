@@ -115,14 +115,16 @@ static void AppTaskExecutor (void *p_arg)
     while (OS_TRUE) {                                          /* Task body, always written as an infinite loop.       */
         OSSemPend(pLEDctrlSemphore, 0, &err);
         
-        led_toggle();
-        
         if (cnt == 0) {
             cnt++;
-            lcd_fill_window(50, 50, 250, 150, YELLOW);
+            led_ctrl(ON);
+            lcd_fill_window_fast(0, 0, LCD_XSIZE - 1, LCD_YSIZE - 1, RED);
+            led_ctrl(OFF);
         } else {
             cnt = 0;
-            lcd_fill_window(50, 50, 250, 150, GREY);
+            led_ctrl(ON);
+            lcd_fill_window_fast(0, 0, LCD_XSIZE - 1, LCD_YSIZE - 1, YELLOW);
+            led_ctrl(OFF);
         }
     }
 }

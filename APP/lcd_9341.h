@@ -24,6 +24,7 @@ void lcd_draw_h_line(uint16 x1, uint16 y, uint16 x2, uint16 color);
 void lcd_draw_v_line(uint16 x, uint16 y1, uint16 y2, uint16 color);
 void lcd_set_window(uint16 x1, uint16 y1, uint16 x2, uint16 y2);
 void lcd_fill_window(uint16 x1, uint16 y1, uint16 x2, uint16 y2, uint16 color);
+void lcd_fill_window_fast(uint16 x1, uint16 y1, uint16 x2, uint16 y2, uint16 color);
 void lcd_backlight_ctrl (uint32 on_off);
 void lcd_display_off(void);
 void lcd_display_on(void);

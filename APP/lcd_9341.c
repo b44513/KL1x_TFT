@@ -38,8 +38,8 @@
 #define LCD_WRITE_CMD(val)          do {                \
                                         _CS_L();        \
                                         _RS_L();        \
-                                        _WR_DATA(val);	\
                                         _WR_L();        \
+                                        _WR_DATA(val);	\
                                         _WR_H();        \
                                         _CS_H();        \
                                     } while (0)          
@@ -47,8 +47,8 @@
 #define LCD_WRITE_DATA(val)         do {                \
                                         _CS_L();        \
                                         _RS_H();        \
-                                        _WR_DATA(val);	\
                                         _WR_L();        \
+                                        _WR_DATA(val);	\
                                         _WR_H();        \
                                         _CS_H();        \
                                     } while (0)    
@@ -140,28 +140,28 @@ static void _lcd_io_init(void)
     SIM_SCGC5 |= SIM_SCGC5_PORTD_MASK;
    
     /* PORT mux */
-    PORTB_PCR2  = PORT_PCR_MUX(1);
-    PORTB_PCR3  = PORT_PCR_MUX(1);
-    PORTB_PCR16 = PORT_PCR_MUX(1);
-    PORTB_PCR17 = PORT_PCR_MUX(1);
-    PORTB_PCR18 = PORT_PCR_MUX(1);
-    PORTB_PCR19 = PORT_PCR_MUX(1);
-    PORTC_PCR0  = PORT_PCR_MUX(1);
-    PORTC_PCR1  = PORT_PCR_MUX(1);
-    PORTC_PCR2  = PORT_PCR_MUX(1);
-    PORTC_PCR3  = PORT_PCR_MUX(1);
-    PORTC_PCR4  = PORT_PCR_MUX(1);
-    PORTC_PCR5  = PORT_PCR_MUX(1);
-    PORTC_PCR6  = PORT_PCR_MUX(1);
-    PORTC_PCR7  = PORT_PCR_MUX(1);
-    PORTC_PCR8  = PORT_PCR_MUX(1);
-    PORTC_PCR9  = PORT_PCR_MUX(1);
-    PORTC_PCR10 = PORT_PCR_MUX(1);
-    PORTC_PCR11 = PORT_PCR_MUX(1);
-    PORTD_PCR0  = PORT_PCR_MUX(1);
-    PORTD_PCR1  = PORT_PCR_MUX(1);
-    PORTD_PCR2  = PORT_PCR_MUX(1);
-    PORTD_PCR3  = PORT_PCR_MUX(1);
+    PORTB_PCR2  = PORT_PCR_MUX(1) | PORT_PCR_DSE_MASK;
+    PORTB_PCR3  = PORT_PCR_MUX(1) | PORT_PCR_DSE_MASK;
+    PORTB_PCR16 = PORT_PCR_MUX(1) | PORT_PCR_DSE_MASK;
+    PORTB_PCR17 = PORT_PCR_MUX(1) | PORT_PCR_DSE_MASK;
+    PORTB_PCR18 = PORT_PCR_MUX(1) | PORT_PCR_DSE_MASK;
+    PORTB_PCR19 = PORT_PCR_MUX(1) | PORT_PCR_DSE_MASK;
+    PORTC_PCR0  = PORT_PCR_MUX(1) | PORT_PCR_DSE_MASK;
+    PORTC_PCR1  = PORT_PCR_MUX(1) | PORT_PCR_DSE_MASK;
+    PORTC_PCR2  = PORT_PCR_MUX(1) | PORT_PCR_DSE_MASK;
+    PORTC_PCR3  = PORT_PCR_MUX(1) | PORT_PCR_DSE_MASK;
+    PORTC_PCR4  = PORT_PCR_MUX(1) | PORT_PCR_DSE_MASK;
+    PORTC_PCR5  = PORT_PCR_MUX(1) | PORT_PCR_DSE_MASK;
+    PORTC_PCR6  = PORT_PCR_MUX(1) | PORT_PCR_DSE_MASK;
+    PORTC_PCR7  = PORT_PCR_MUX(1) | PORT_PCR_DSE_MASK;
+    PORTC_PCR8  = PORT_PCR_MUX(1) | PORT_PCR_DSE_MASK;
+    PORTC_PCR9  = PORT_PCR_MUX(1) | PORT_PCR_DSE_MASK;
+    PORTC_PCR10 = PORT_PCR_MUX(1) | PORT_PCR_DSE_MASK;
+    PORTC_PCR11 = PORT_PCR_MUX(1) | PORT_PCR_DSE_MASK;
+    PORTD_PCR0  = PORT_PCR_MUX(1) | PORT_PCR_DSE_MASK;
+    PORTD_PCR1  = PORT_PCR_MUX(1) | PORT_PCR_DSE_MASK;
+    PORTD_PCR2  = PORT_PCR_MUX(1) | PORT_PCR_DSE_MASK;
+    PORTD_PCR3  = PORT_PCR_MUX(1) | PORT_PCR_DSE_MASK;
     
     /* Direction */
     FGPIOB_PDDR |= 0x000F000C; 
@@ -515,6 +515,37 @@ void lcd_fill_window(uint16 x1, uint16 y1, uint16 x2, uint16 y2, uint16 color)
     
     //lcd_display_on();
 }
+
+/*  
+    func name:  lcd_fill_window_fast 
+    input:      x1, y1, x2, y2, color
+    output:     none
+    note:       fast fill a window at (x, y) with color
+*/
+void lcd_fill_window_fast(uint16 x1, uint16 y1, uint16 x2, uint16 y2, uint16 color)
+{
+    uint32 cnt;
+    uint32 total_pixel_num = (x2 - x1 + 1) * (y2 - y1 + 1);
+    
+    //lcd_display_off();
+    
+    lcd_set_window(x1, y1, x2, y2);
+
+    _CS_L();
+    _RS_H();
+    
+    for(cnt = 0; cnt < total_pixel_num; cnt++)
+    {
+        _WR_L();
+        _WR_DATA(color);
+        _WR_H();
+    }
+    
+    _CS_H();
+    
+    //lcd_display_on();
+}
+
 
 
 
