@@ -132,7 +132,7 @@ static void _delay_ms(uint32 ms)
     output:     none
     note:       initialize all GPIO related to TFT control to a certain state
 */
-static void _lcd_io_init(void)
+void lcd_io_init(void)
 {
     /* clock */
     SIM_SCGC5 |= SIM_SCGC5_PORTB_MASK;
@@ -180,7 +180,7 @@ static void _lcd_io_init(void)
     output:none
     note:reset lcd by GPIO
 */
-static void _lcd_reset(void)
+void lcd_reset(void)
 {
     _RST_L();
     _delay_ms(1);
@@ -237,9 +237,6 @@ void lcd_display_on(void)
 */
 void lcd_init(void)
 {
-    _lcd_io_init();
-    _lcd_reset();
-
     LCD_WRITE_CMD(0xCF);
     LCD_WRITE_DATA(0x00);
     LCD_WRITE_DATA(0x81);
@@ -356,8 +353,6 @@ void lcd_init(void)
     LCD_WRITE_CMD(0x11);
     _delay_ms(120);
     LCD_WRITE_CMD(0x29);
-    
-    lcd_backlight_ctrl(ON);
 }
 
 /*  

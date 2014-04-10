@@ -18,6 +18,8 @@
 #define YELLOW         0xFFE0
 
 void lcd_init(void);
+void lcd_io_init(void);
+void lcd_reset(void);
 void lcd_draw_pixel(uint16 x, uint16 y, uint16 color);
 uint16 lcd_get_pixel(uint16 x, uint16 y);
 void lcd_draw_h_line(uint16 x1, uint16 y, uint16 x2, uint16 color);

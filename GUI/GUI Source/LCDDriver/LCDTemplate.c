@@ -39,9 +39,109 @@ Version-Date---Author-Explanation
 #include "LCD_Private.h"      /* private modul definitions & config */
 #include "GUI_Private.h"
 #include "GUIDebug.h"
+#include <ucos_ii.h>
+#include "common.h"
 
-#if (LCD_CONTROLLER == -1) \
-    && (!defined(WIN32) | defined(LCD_SIMCONTROLLER))
+#define _RST_H()    (FGPIOB_PSOR = 1 << 2)
+#define _RST_L()	(FGPIOB_PCOR = 1 << 2)
+
+#define _BL_H()     (FGPIOB_PSOR = 1 << 3)
+#define _BL_L()	    (FGPIOB_PCOR = 1 << 3)
+
+#define _CS_H()	    (FGPIOB_PSOR = 1 << 16)
+#define _CS_L()	    (FGPIOB_PCOR = 1 << 16)
+
+#define _RS_H()	    (FGPIOB_PSOR = 1 << 17)
+#define _RS_L()	    (FGPIOB_PCOR = 1 << 17)
+
+#define _WR_H()	    (FGPIOB_PSOR = 1 << 18)
+#define _WR_L()	    (FGPIOB_PCOR = 1 << 18)
+
+#define _RD_H()	    (FGPIOB_PSOR = 1 << 19)
+#define _RD_L()	    (FGPIOB_PCOR = 1 << 19)
+
+#define _WR_DATA(val)               do {                   \
+                                        FGPIOC_PDOR = val; \
+                                        FGPIOD_PDOR = (val) >> 12;  \
+                                    } while (0)            \
+										
+#define _RD_DATA(p_val)             do {                   \
+                                        *(p_val) = (FGPIOC_PDIR & 0x00000FFF);			\
+                                        *(p_val) |= ((FGPIOD_PDIR & 0x0000000F) << 12);	\
+                                    } while (0)            \
+                                        
+#define LCD_WRITE_CMD(val)          do {                \
+                                        _CS_L();        \
+                                        _RS_L();        \
+                                        _WR_L();        \
+                                        _WR_DATA(val);	\
+                                        _WR_H();        \
+                                        _CS_H();        \
+                                    } while (0)          
+
+#define LCD_WRITE_DATA(val)         do {                \
+                                        _CS_L();        \
+                                        _RS_H();        \
+                                        _WR_L();        \
+                                        _WR_DATA(val);	\
+                                        _WR_H();        \
+                                        _CS_H();        \
+                                    } while (0)    
+										
+#define LCD_CFG_DATA_RD()			do {                \
+										FGPIOC_PDDR &= ~0x00000FFF;	\
+										FGPIOD_PDDR &= ~0x0000000F;	\
+                                    } while (0)    
+										
+#define LCD_CFG_DATA_WR()			do {                \
+										FGPIOC_PDDR |= 0x00000FFF;	\
+										FGPIOD_PDDR |= 0x0000000F;	\
+										FGPIOC_PSOR = 0x00000FFF;	\
+										FGPIOD_PSOR = 0x0000000F;	\
+                                    } while (0)    
+
+/* Tra must > 340ns, a nop is ~20ns @ 48MHz */
+#define _DELAY_TRA()                do {                    \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                    } while (0)             \
+                                        
+/* Trdh must > 90ns, a nop is ~20ns @ 48MHz */
+#define _DELAY_TRDH()               do {                    \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                        asm("nop");         \
+                                     } while (0)            \
+                                            
+#define LCD_READ_DATA(p_val)         do {					\
+                                        _CS_L();			\
+                                        _RS_H();			\
+                                        _RD_L();			\
+                                        _DELAY_TRA();       \
+										_RD_DATA(p_val);	\
+                                        _RD_H();			\
+                                        _DELAY_TRDH();      \
+                                        _CS_H();        	\
+                                    } while (0)    
 
 /*********************************************************************
 *
@@ -385,9 +485,6 @@ static void  DrawBitLine16BPP(int x, int y, U16 const GUI_UNI_PTR * p, int xsize
 *   that no check on the parameters needs to be performed.
 */
 void LCD_L0_SetPixelIndex(int x, int y, int PixelIndex) {
-  GUI_USE_PARA(x);
-  GUI_USE_PARA(y);
-  GUI_USE_PARA(PixelIndex);
   /* Convert logical into physical coordinates (Dep. on LCDConf.h) */
   #if LCD_SWAP_XY | LCD_MIRROR_X| LCD_MIRROR_Y
     int xPhys = LOG2PHYS_X(x, y);
@@ -397,9 +494,16 @@ void LCD_L0_SetPixelIndex(int x, int y, int PixelIndex) {
     #define yPhys y
   #endif
   /* Write into hardware ... Adapt to your system */
-  {
-    /* ... */
-  }
+    LCD_WRITE_CMD(0x2A); 
+    LCD_WRITE_DATA(xPhys >> 8);
+    LCD_WRITE_DATA(xPhys & 0xFF);
+
+    LCD_WRITE_CMD(0x2B); 
+    LCD_WRITE_DATA(yPhys >> 8);
+    LCD_WRITE_DATA(yPhys & 0x0FF);
+
+    LCD_WRITE_CMD(0x2C); 
+    LCD_WRITE_DATA(PixelIndex);
 }
 
 /*********************************************************************
@@ -413,8 +517,6 @@ void LCD_L0_SetPixelIndex(int x, int y, int PixelIndex) {
 */
 unsigned int LCD_L0_GetPixelIndex(int x, int y) {
   LCD_PIXELINDEX PixelIndex;
-  GUI_USE_PARA(x);
-  GUI_USE_PARA(y);
   /* Convert logical into physical coordinates (Dep. on LCDConf.h) */
   #if LCD_SWAP_XY | LCD_MIRROR_X| LCD_MIRROR_Y
     int xPhys = LOG2PHYS_X(x, y);
@@ -424,10 +526,24 @@ unsigned int LCD_L0_GetPixelIndex(int x, int y) {
     #define yPhys y
   #endif
   /* Read from hardware ... Adapt to your system */
-  {
-    PixelIndex = 0;/* ... */
-  }
-  return PixelIndex;
+    LCD_WRITE_CMD(0x2A); 
+    LCD_WRITE_DATA(xPhys >> 8);
+    LCD_WRITE_DATA(xPhys & 0xFF);
+
+    LCD_WRITE_CMD(0x2B); 
+    LCD_WRITE_DATA(yPhys >> 8);
+    LCD_WRITE_DATA(yPhys & 0x0FF);
+
+    LCD_WRITE_CMD(0x2E);
+
+    LCD_CFG_DATA_RD();
+
+    LCD_READ_DATA(&PixelIndex);
+    LCD_READ_DATA(&PixelIndex);
+
+    LCD_CFG_DATA_WR();
+
+    return PixelIndex;
 }
 
 /*********************************************************************
@@ -444,13 +560,33 @@ void LCD_L0_XorPixel(int x, int y) {
 *       LCD_L0_DrawHLine
 */
 void LCD_L0_DrawHLine  (int x0, int y,  int x1) {
+#if LCD_SWAP_XY | LCD_MIRROR_X| LCD_MIRROR_Y
+        int x_phys  = LOG2PHYS_X(x0, y);
+        int y0_phys = LOG2PHYS_Y(x0, y);
+        int y1_phys = LOG2PHYS_Y(x1, y);
+#else
+    #define x0_phys x0
+    #define y_phys y
+    #define x1_phys x1
+#endif
+    
   if (GUI_Context.DrawMode & LCD_DRAWMODE_XOR) {
-    for (; x0 <= x1; x0++) {
-      LCD_L0_XorPixel(x0, y);
+    for (; x0_phys <= x1_phys; x0_phys++) {
+      LCD_L0_XorPixel(x0_phys, y_phys);
     }
   } else {
-    for (; x0 <= x1; x0++) {
-      LCD_L0_SetPixelIndex(x0, y, LCD_COLORINDEX);
+    LCD_WRITE_CMD(0x2A);
+    LCD_WRITE_DATA(x0_phys >> 8);
+    LCD_WRITE_DATA(x0_phys & 0xFF);
+
+    LCD_WRITE_CMD(0x2B);
+    LCD_WRITE_DATA(y_phys >> 8);
+    LCD_WRITE_DATA(y_phys & 0x0FF);
+    
+    LCD_WRITE_CMD(0x2C);
+      
+    for (; x0_phys <= x1_phys; x0_phys++) {
+        LCD_WRITE_DATA(LCD_COLORINDEX);
     }
   }
 }
@@ -465,9 +601,33 @@ void LCD_L0_DrawVLine  (int x, int y0,  int y1) {
       LCD_L0_XorPixel(x, y0);
     }
   } else {
-    for (; y0 <= y1; y0++) {
-      LCD_L0_SetPixelIndex(x, y0, LCD_COLORINDEX);
+    LCD_WRITE_CMD(0x36);
+    LCD_WRITE_DATA(0x08);               /* (0, 0) at left top, Vertical Screen */
+	
+    /* must do coordinate conversion, physical (0, 0) is at left top */
+#define TMPT_LOG2PHYS_X(x, y) LCD_YSIZE - 1 - (y)
+#define TMPT_LOG2PHYS_Y(x, y) x
+    
+	uint16 y_phys  = TMPT_LOG2PHYS_Y(x, y0);
+	uint16 x0_phys = TMPT_LOG2PHYS_X(x, y1);
+	uint16 x1_phys = TMPT_LOG2PHYS_X(x, y0);
+    
+    LCD_WRITE_CMD(0x2A);
+    LCD_WRITE_DATA(x0_phys >> 8);
+    LCD_WRITE_DATA(x0_phys & 0xFF);
+
+    LCD_WRITE_CMD(0x2B);
+    LCD_WRITE_DATA(y_phys >> 8);
+    LCD_WRITE_DATA(y_phys & 0x0FF);
+    
+    LCD_WRITE_CMD(0x2C);
+    for (; x0_phys <= x1_phys; x0_phys++)
+    {
+        LCD_WRITE_DATA(LCD_COLORINDEX);
     }
+    
+    LCD_WRITE_CMD(0x36); 
+    LCD_WRITE_DATA(0x68);               /* (0, 0) at right top, Horizontal Screen */
   }
 }
 
@@ -476,9 +636,57 @@ void LCD_L0_DrawVLine  (int x, int y0,  int y1) {
 *       LCD_L0_FillRect
 */
 void LCD_L0_FillRect(int x0, int y0, int x1, int y1) {
-  for (; y0 <= y1; y0++) {
-    LCD_L0_DrawHLine(x0, y0, x1);
-  }
+    if (GUI_Context.DrawMode & LCD_DRAWMODE_XOR)             
+    {
+        for (; x0 <= x1; x0++)
+        {
+            LCD_L0_DrawVLine(x0, y0, y1);
+        }
+    }
+    else                                                      
+    {
+
+#if LCD_SWAP_XY | LCD_MIRROR_X | LCD_MIRROR_Y                
+        int x0_phys = LOG2PHYS_X(x0, y1);
+        int y0_phys = LOG2PHYS_Y(x0, y0);
+        int x1_phys = LOG2PHYS_X(x1, y0);
+        int y1_phys = LOG2PHYS_Y(x1, y1);
+#else
+        #define x0_phys x0
+        #define y0_phys y0
+        #define x1_phys x1
+        #define y1_phys y1
+#endif
+
+        uint32 cnt;
+        uint32 total_pixel_num = (x1_phys - x0_phys + 1) * (y1_phys - y0_phys + 1);
+
+        LCD_WRITE_CMD(0x2A); 
+        LCD_WRITE_DATA(x0_phys >> 8);
+        LCD_WRITE_DATA(x0_phys & 0xFF);
+        LCD_WRITE_DATA(x1_phys >> 8);
+        LCD_WRITE_DATA(x1_phys & 0xFF);
+
+        LCD_WRITE_CMD(0x2B); 
+        LCD_WRITE_DATA(y0_phys >> 8);
+        LCD_WRITE_DATA(y0_phys & 0x0FF);
+        LCD_WRITE_DATA(y1_phys >> 8);
+        LCD_WRITE_DATA(y1_phys & 0x0FF);
+
+        LCD_WRITE_CMD(0x2C); 
+
+        _CS_L();
+        _RS_H();
+
+        for(cnt = 0; cnt < total_pixel_num; cnt++)
+        {
+            _WR_L();
+            _WR_DATA(LCD_COLORINDEX);
+            _WR_H();
+        }
+
+        _CS_H();
+    }
 }
 
 /*********************************************************************
@@ -556,8 +764,124 @@ void LCD_Off (void) {
 *   Initialises the LCD-controller.
 */
 int  LCD_L0_Init(void) {
-  LCD_INIT_CONTROLLER();
-  return 0;
+    LCD_WRITE_CMD(0xCF);
+    LCD_WRITE_DATA(0x00);
+    LCD_WRITE_DATA(0x81);
+    LCD_WRITE_DATA(0x30);
+
+    LCD_WRITE_CMD(0xED);
+    LCD_WRITE_DATA(0x64);
+    LCD_WRITE_DATA(0x03);
+    LCD_WRITE_DATA(0x12);
+    LCD_WRITE_DATA(0x81);
+
+    LCD_WRITE_CMD(0xE8);
+    LCD_WRITE_DATA(0x85);
+    LCD_WRITE_DATA(0x10);
+    LCD_WRITE_DATA(0x78);
+
+    LCD_WRITE_CMD(0xCB);
+    LCD_WRITE_DATA(0x39);
+    LCD_WRITE_DATA(0x2C);
+    LCD_WRITE_DATA(0x00);
+    LCD_WRITE_DATA(0x34);
+    LCD_WRITE_DATA(0x02);
+
+    LCD_WRITE_CMD(0xF7);
+    LCD_WRITE_DATA(0x20);
+
+    LCD_WRITE_CMD(0xEA);
+    LCD_WRITE_DATA(0x00);
+    LCD_WRITE_DATA(0x00);
+
+    LCD_WRITE_CMD(0xB1);
+    LCD_WRITE_DATA(0x00);
+    LCD_WRITE_DATA(0x1B);
+
+    LCD_WRITE_CMD(0xB6);
+    LCD_WRITE_DATA(0x0A);
+    LCD_WRITE_DATA(0xA2);
+
+    LCD_WRITE_CMD(0xC0);
+    LCD_WRITE_DATA(0x35);
+
+    LCD_WRITE_CMD(0xC1);
+    LCD_WRITE_DATA(0x11);
+
+    LCD_WRITE_CMD(0xC5);
+    LCD_WRITE_DATA(0x45);
+    LCD_WRITE_DATA(0x45);
+
+    LCD_WRITE_CMD(0xC7);
+    LCD_WRITE_DATA(0xA2);
+
+    LCD_WRITE_CMD(0xF2);
+    LCD_WRITE_DATA(0x00);
+
+    LCD_WRITE_CMD(0x26);
+    LCD_WRITE_DATA(0x01);
+
+    LCD_WRITE_CMD(0xE0);
+    LCD_WRITE_DATA(0x0F);
+    LCD_WRITE_DATA(0x26);
+    LCD_WRITE_DATA(0x24);
+    LCD_WRITE_DATA(0x0B);
+    LCD_WRITE_DATA(0x0E);
+    LCD_WRITE_DATA(0x09);
+    LCD_WRITE_DATA(0x54);
+    LCD_WRITE_DATA(0xA8);
+    LCD_WRITE_DATA(0x46);
+    LCD_WRITE_DATA(0x0C);
+    LCD_WRITE_DATA(0x17);
+    LCD_WRITE_DATA(0x09);
+    LCD_WRITE_DATA(0x0F);
+    LCD_WRITE_DATA(0x07);
+    LCD_WRITE_DATA(0x00);
+
+    LCD_WRITE_CMD(0xE1); 
+    LCD_WRITE_DATA(0x00);
+    LCD_WRITE_DATA(0x19);
+    LCD_WRITE_DATA(0x1B);
+    LCD_WRITE_DATA(0x04);
+    LCD_WRITE_DATA(0x10);
+    LCD_WRITE_DATA(0x07);
+    LCD_WRITE_DATA(0x2A);
+    LCD_WRITE_DATA(0x47);
+    LCD_WRITE_DATA(0x39);
+    LCD_WRITE_DATA(0x03);
+    LCD_WRITE_DATA(0x06);
+    LCD_WRITE_DATA(0x06);
+    LCD_WRITE_DATA(0x30);
+    LCD_WRITE_DATA(0x38);
+    LCD_WRITE_DATA(0x0F);
+
+    /* Bit7 - Bit 5 control the where (0, 0) located and how memory point increased automatically */
+    LCD_WRITE_CMD(0x36); 
+    LCD_WRITE_DATA(0x68);       /* (0, 0) at right top, horizontal screen */
+    //LCD_WRITE_DATA(0xA8);       /* (0, 0) at left bottom, horizontal screen */
+    //LCD_WRITE_DATA(0x08);       /* (0, 0) at left top, vertical screen */
+    //LCD_WRITE_DATA(0xC8);       /* (0, 0) at right bottom, vertical screen */
+    
+    LCD_WRITE_CMD(0x2A); 
+    LCD_WRITE_DATA(0x00);
+    LCD_WRITE_DATA(0x00);
+    LCD_WRITE_DATA(0x00);
+    LCD_WRITE_DATA(0xEF);
+
+    LCD_WRITE_CMD(0x2B); 
+    LCD_WRITE_DATA(0x00);
+    LCD_WRITE_DATA(0x00);
+    LCD_WRITE_DATA(0x01);
+    LCD_WRITE_DATA(0x3F);
+
+    LCD_WRITE_CMD(0x3a);
+    LCD_WRITE_DATA(0x55);
+    
+    LCD_WRITE_CMD(0x11);
+    OSTimeDlyHMSM(0, 0, 0, 120);       /* Delay 50 ms */
+    LCD_WRITE_CMD(0x29);
+
+    return 0;
 }
 
 /*********************************************************************
@@ -578,10 +902,4 @@ void * LCD_L0_GetDevFunc(int Index) {
   return NULL;
 }
 
-#else
-
-void LCDTemplate_c(void);
-void LCDTemplate_c(void) { } /* avoid empty object files */
-
-#endif /* (LCD_CONTROLLER undefined) */
 	 	 			 		    	 				 	  			   	 	 	 	 	 	  	  	      	   		 	 	 		  		  	 		 	  	  			     			       	   	 			  		    	 	     	 				  	 					 	 			   	  	  			 				 		 	 	 			     			 

@@ -2938,6 +2938,9 @@
       <group>
         <name>LCDDriver</name>
         <file>
+          <name>$PROJ_DIR$\..\GUI\GUI Source\LCDDriver\GUI_X.c</name>
+        </file>
+        <file>
           <name>$PROJ_DIR$\..\GUI\GUI Source\LCDDriver\LCDTemplate.c</name>
         </file>
       </group>
